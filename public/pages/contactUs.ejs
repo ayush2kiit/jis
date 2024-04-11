@@ -1,0 +1,191 @@
+<!-- include header -->
+<%- include('../include/header.ejs') %>
+<!-- /include header -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<head>
+  <style>
+  
+    .table tbody tr:nth-of-type(even){
+      background-color: lightgray;
+    }
+  
+    .table tbody tr{
+      border-bottom: 2px solid #009879;
+    }
+    
+    /*.table tbody tr td:first-of-type{
+      font-style: italic;
+    }*/
+
+    .table tbody tr:hover{
+      color: aqua;
+      background-color: rgb(31, 39, 39);
+      transform: scale(1.05);
+      cursor: grab;
+    }
+    /*link hover pe color change ke liye */
+    .table tbody tr td a:hover{
+      color: aqua;
+    }
+    
+  </style>
+</head>
+<body class="hero-anime"> 
+  <%- include('../include/clientNavbar.ejs') %>
+    <br>
+  <br>
+  <br>
+    <br>
+    <br>
+    <!-- <h1 style="text-align: center;color: black;font-style: italic;"><u>TABLE FOR CONTACT</u></h1> -->
+    <br>
+   
+<div class="container form-area">
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+ <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Court</th>
+      <th scope="col" style="text-align: center;">Jurisdiction</th>
+      <th scope="col">Contact</th>
+    </tr>
+  </thead>
+  <tbody class="myTable">
+    <tr>
+      <td><a href="http://www.allahabadhighcourt.in/" target="_blank" style="cursor: pointer;">Allahabad High Court</a> </td>
+      <td style="text-align: center;">Uttar Pradesh</td>
+      <td>cpc-all@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://hc.ap.nic.in/" target="_blank" style="cursor: pointer;">Andhra Pradesh</a></td>
+      <td style="text-align: center;">Andhra Pradesh</td>
+      <td>cpc-ap@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://bombayhighcourt.nic.in/" target="_blank" style="cursor: pointer;">Bombay</a></td>
+  <td style="text-align: center;">Maharashtra, Goa, Dadra and Nagar Haveli, Daman and Diu</td>
+  <td>cpc-bom@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.calcuttahighcourt.gov.in/" target="_blank" style="cursor: pointer;">Calcutta</a></td>
+  <td style="text-align: center;">West Bengal, Andaman and Nicobar Islands</td>
+  <td>cpc-cal@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://highcourtchd.gov.in/" target="_blank" style="cursor: pointer;">Chhattisgarh</a></td>
+  <td style="text-align: center;">Chhattisgarh</td>
+  <td>cpc-cg@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://delhihighcourt.nic.in/" target="_blank" style="cursor: pointer;">Delhi</a></td>
+      <td style="text-align: center;">National Capital Territory of Delhi</td>
+      <td>cpc-del@aij.gov.in</td>
+    </tr>
+    
+    <tr>
+      <td><a href="http://ghconline.gov.in/" target="_blank" style="cursor: pointer;">Gauhati</a></td>
+  <td style="text-align: center;">Arunachal Pradesh, Assam,Nagaland, Mizoram</td>
+  <td>cpc-asm@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://gujarathighcourt.nic.in/" target="_blank" style="cursor: pointer;">Gujarat</a></td>
+  <td style="text-align: center;">Gujarat</td>
+  <td>cpc-guj@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://hphighcourt.nic.in/" target="_blank" style="cursor: pointer;"> Himachal Pradesh</a></td>
+      <td style="text-align: center;">Himachal Pradesh</td>
+      <td>>cpc-hp@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="http://jkhighcourt.nic.in/" target="_blank" style="cursor: pointer;">Jammu and Kashmir</a></td>
+      <td style="text-align: center;">Jammu and Kashmir</td>
+      <td>cpc-jk@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td> <a href="https://jharkhandhighcourt.nic.in/" target="_blank" style="cursor: pointer;">Jharkhand</a></td>
+      <td style="text-align: center;">Jharkhand</td>
+      <td>cpc-jhr@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://karnatakajudiciary.kar.nic.in/" target="_blank" style="cursor: pointer;">Karnataka</a></td>
+      <td style="text-align: center;">Karnataka</td>
+      <td>cpc-kar@aij.gov.in</td>    </tr>
+    <tr>
+      <td><a href="https://hckrecruitment.nic.in/" target="_blank" style="cursor: pointer;">Kerala</a></td>
+      <td style="text-align: center;">Kerala, Lakshadweep</td>
+      <td>cpc-ker@aij.gov.in</td></td>
+    </tr>
+    <tr>
+      <td><a href="https://mphc.gov.in/"target="_blank" style="cursor: pointer;">Madhya Pradesh</a></td>
+  <td style="text-align: center;">Madhya Pradesh</td>
+  <td>cpc-mp@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="http://www.hcmadras.tn.nic.in/" target="_blank" style="cursor: pointer;">Madras</a></td>
+      <td style="text-align: center;">Tamil Nadu, Puducherry</td>
+      <td>cpc-tn@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://hcmimphal.nic.in/" target="_blank" style="cursor: pointer;">Manipur</a></td>
+  <td style="text-align: center;">Manipur</td>
+  <td>cpc-mnp@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="http://meghalayahighcourt.nic.in/" target="_blank" style="cursor: pointer;">Meghalaya</a></td>
+  <td style="text-align: center;">Meghalaya</td>
+  <td>cpc-mgl@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.orissahighcourt.nic.in/"target="_blank" style="cursor: pointer;">Orissa</a></td>
+      <td style="text-align: center;">Odisha</td>
+      <td>cpc-ori@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="http://patnahighcourt.gov.in/" target="_blank" style="cursor: pointer;">Patna</a></td>
+      <td style="text-align: center;">Bihar</td>
+      <td>cpc-pat@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://highcourtchd.gov.in/" target="_blank" style="cursor: pointer;">Punjab and Haryana</a></td>
+      <td style="text-align: center;">Punjab, Haryana, Chandigarh</td>
+      <td>cpc-phc@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://hcraj.nic.in/hcraj/" target="_blank" style="cursor: pointer;">Rajasthan</a></td>
+      <td style="text-align: center;">Rajasthan</td>
+      <td>cpc-raj@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://hcs.gov.in/hcs/" target="_blank" style="cursor: pointer;">Sikkim</a></td>
+  <td style="text-align: center;">Sikkim</td>
+  <td>cpc-sik@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://thc.nic.in/" target="_blank" style="cursor: pointer;">Tripura</a></td>
+      <td style="text-align: center;">Tripura</td>
+      <td>cpc-trp@aij.gov.in</td>
+    </tr>
+    <tr>
+      <td><a href="https://highcourtofuttarakhand.gov.in/" target="_blank" style="cursor: pointer;">Uttarakhand</a></td>
+      <td style="text-align: center;">Uttarakhand</td>
+      <td>cpc-uk@aij.gov.in</td>
+    </tr>
+
+  </tbody>
+</table>
+        </div>
+   <!-- include header -->
+    <%- include('../include/footer.ejs') %>
+<!-- /include header -->   
+</body>

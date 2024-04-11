@@ -1,0 +1,50 @@
+
+<!-- include header -->
+    <%- include('../include/header.ejs') %>
+<!-- /include header -->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<body class="hero-anime"> 
+	<%- include('../include/clientNavbar.ejs') %>
+     <div class="container form-area">
+            <!-- form handling -->
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <br>
+            <h4 class="heading">Today's Hearings</h4><br>
+
+            <input id="myInput" type="text" placeholder="Search..">
+<br><br>
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>CIN</th>
+                            <th>CNAME</th>
+                            <th>Time of Hearing</th>
+                            <th>Reason of Adjournment</th>
+                            <th>Presiding Judge</th>
+                            <th>Public Prosecutor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="myTable">
+                          <%- include('../include/showSession.ejs') %>
+                    </tbody>
+
+                </table>
+            </form>
+        </div>
+   <!-- include header -->
+    <%- include('../include/footer.ejs') %>
+<!-- /include header -->   
