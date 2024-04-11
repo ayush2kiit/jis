@@ -38,6 +38,7 @@ app.get("/lawyerlogin",function(req,res){
 	res.render("lawyerLogin");
 })
 
+
 app.get("/judgelogin",function(req,res){
 	res.render("judgeLogin");
 })
@@ -45,6 +46,16 @@ app.get("/judgelogin",function(req,res){
 app.get("/register",function(req,res){
 	res.render("register");
 })
+
+// app.get("/addlawyer",function(req,res){
+// 	res.render("lawyerRegister");
+// })
+
+// app.get("/addjudge",function(req,res){
+// 	res.render("judgeRegister");
+// })
+
+
 
 app.post("/register",function(req,res){
 	const newAdmin=new adminDB({

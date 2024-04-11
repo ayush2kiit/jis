@@ -8,6 +8,9 @@ const controller = require('../controller/controller');
 route.get('/', services.homeRoutes);
 route.get('/view', services.viewCase);
 route.get('/add', services.addCase);
+route.get('/addlawyer', services.addLawyer);
+route.get('/addjudge', services.addJudge);
+
 route.get('/update-user', services.update_user);
 route.get('/contact', services.contactUs);
 route.get("/login",services.login);
