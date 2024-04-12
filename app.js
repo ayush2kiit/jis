@@ -29,6 +29,7 @@ app.use('/',require("./server/routes/router"))
 
 const mongoose=require("mongoose");
 const adminDB = require('./server/model/admin');
+const Judgesdb = require('./server/model/judges');
 
 app.get("/login",function(req,res){
 	res.render("login");
@@ -88,7 +89,27 @@ app.post("/login",function(req,res){
 		}
 	})
 })
+app.post("/judgelogin", function(req, res) {
+    const userID = req.body.username;
+    const password = (req.body.password); // Hash the password using md5
 
-
+    // Find the judge with the provided username
+    Judgesdb.findOne({ username: userID }, function(err, foundJudge) {
+		
+        if (err) {
+            res.redirect("/failure");
+        } else {
+            if (foundJudge) {
+                // Judge found, check password
+                if (foundJudge.password === password) {
+                    res.redirect("/view");// or res.redirect("/view");
+                } else {
+                    // Passwords don't match, login failed
+                    res.redirect("/failure");// or res.redirect("/failure");
+                }
+            } 
+        }
+    });
+});
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 

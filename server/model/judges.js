@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 var judgeSchema= new mongoose.Schema({
-	RIG:{
+		username:{
 		   type: String,
 		  // required:true,
 		   //required: [true, "Judge ID is required"]

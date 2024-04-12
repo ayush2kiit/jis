@@ -15,6 +15,7 @@ axios.get('http://localhost:5000/api/users')
         })
 
 }
+
 exports.addCase=(req,res)=>{
 res.render('pages/addCase');
 }

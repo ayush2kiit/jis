@@ -133,7 +133,7 @@ exports.createJudge = (req, res) => {
         // activeCases: [parseInt(req.body.activeCases)],
         // pastCases: [parseInt(req.body.pastCases)]
 
-        const { RIG, password, name, activecases, pastcases } = req.body;
+        const { username, password, name, activecases, pastcases } = req.body;
         
 
 
@@ -142,7 +142,7 @@ exports.createJudge = (req, res) => {
 
 
     const newJudge = new Judgesdb({
-        RIG,
+        username,
         password,
         name,
         activeCases: activecases.split(',').map(Number), // Convert string to array of numbers
@@ -159,7 +159,8 @@ exports.createJudge = (req, res) => {
     // Save the new judge instance to the database
     newJudge.save()
         .then(data => {
-            res.send(data);
+           // res.send(data);
+            res.redirect('/addjudge');
         })
         .catch(err => {
             res.status(500).send({

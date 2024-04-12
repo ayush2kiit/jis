@@ -7,6 +7,7 @@ const controller = require('../controller/controller');
 
 route.get('/', services.homeRoutes);
 route.get('/view', services.viewCase);
+
 route.get('/add', services.addCase);
 route.get('/addlawyer', services.addLawyer);
 route.get('/addjudge', services.addJudge);
