@@ -118,69 +118,82 @@ exports.delete = (req, res)=>{
 
 
 
-//judges db
-exports.createJudge = (req,res)=>{
+exports.createJudge = (req, res) => {
     // validate request
-    if(!req.body){
-        res.status(400).send({ message : "Content can not be emtpy!"});
+    if (!req.body) {
+        res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
 
-    //create new instance
-  const judge=new Judgesdb({
-    jno: req.body.jno,
-    jname: req.body.jname,
-    leaveFrom: req.body.leaveFrom,
-    leaveTill: req.body.leaveTill,
-    nature: req.body.nature
-  })
+    // Create a new instance of the Judge model
+   
+        // RIG: req.body.RIG,
+        // password: req.body.password,
+        // name: req.body.name,
+        // activeCases: [parseInt(req.body.activeCases)],
+        // pastCases: [parseInt(req.body.pastCases)]
+
+        const { RIG, password, name, activecases, pastcases } = req.body;
+        
 
 
-    // save user in the database
-    judge
-        .save(judge)
+
+   
+
+
+    const newJudge = new Judgesdb({
+        RIG,
+        password,
+        name,
+        activeCases: activecases.split(',').map(Number), // Convert string to array of numbers
+        pastCases: pastcases.split(',').map(Number) // Convert string to array of numbers
+      });
+
+
+      console.log(req.body);
+
+
+
+
+
+    // Save the new judge instance to the database
+    newJudge.save()
         .then(data => {
-            res.send(data)
-            //res.redirect('/add');
+            res.send(data);
         })
-        .catch(err =>{
+        .catch(err => {
             res.status(500).send({
-                message : err.message || "Some error occurred while creating a create operation"
+                message: err.message || "Some error occurred while creating a create operation"
             });
         });
-
 }
 
-
-exports.findJudge = (req, res)=>{
-
-    if(req.query.id){
-        const id = req.query.id
+exports.findJudge = (req, res) => {
+    if (req.query.id) {
+        const id = req.query.id;
 
         Judgesdb.findById(id)
-            .then(data =>{
-                if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
-                }else{
-                    res.send(data)
+            .then(data => {
+                if (!data) {
+                    res.status(404).send({ message: "Not found judge with id " + id });
+                } else {
+                    res.send(data);
                 }
             })
-            .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
-            })
-
-    }else{
+            .catch(err => {
+                res.status(500).send({ message: "Error retrieving judge with id " + id });
+            });
+    } else {
         Judgesdb.find()
-            .then(judge=> {
-                res.send(judge)
+            .then(judges => {
+                res.send(judges);
             })
             .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-            })
+                res.status(500).send({ message: err.message || "Error occurred while retrieving judge information" });
+            });
     }
-
-    
 }
+
 //judges db
 
 

@@ -156,6 +156,10 @@ table{
     margin: .4em 0;
 }
 
+#add_judges .form-group{
+    margin: .4em 0;
+}
+
 #update_user .form-group input[type="text"],
 #add_user .form-group input[type="text"]{
     width: 100%;
@@ -167,8 +171,23 @@ table{
     border-radius: .2em;
 }
 
+
+#add_judges .form-group input[type="text"]{
+    width: 100%;
+    padding: .6em 1em;
+    margin: .5em 0;
+    border: 1px solid var(--border);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1em;
+    border-radius: .2em;
+}
+
 #update_user .form-group .radio,
 #add_user .form-group .radio{
+    margin: 1em 2em;
+}
+
+#add_judges .form-group .radio{
     margin: 1em 2em;
 }
 
@@ -225,8 +244,26 @@ table{
     margin: .5em 0;
 }
 
+
+#add_judges .form-group .btn{
+    width: 100%;
+    padding: .9em 1em;
+    background-color:#16db93; 
+    border: none;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: .2em;
+    margin: .5em 0;
+}
 #update_user .form-group .btn:hover,
 #add_user .form-group .btn:hover{
+    background-color: var(--dark);
+    color: var(--border);
+}
+
+
+#add_judges .form-group .btn:hover{
     background-color: var(--dark);
     color: var(--border);
 }
