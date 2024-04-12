@@ -68,6 +68,16 @@ exports.viewJudges=(req,res)=>{
         })
 }
 
+exports.viewLawyers=(req,res)=>{
+    axios.get('http://localhost:5000/api/lawyers')
+        .then(function(response){
+            res.render('pages/viewLawyers', { judges : response.data });
+        })
+        .catch(err =>{
+            res.send(err);
+        })
+}
+
 
 exports.viewSession=(req,res)=>{
     axios.get('http://localhost:5000/api/hearings')
