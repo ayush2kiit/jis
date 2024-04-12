@@ -3,6 +3,7 @@ var Userdb = require('../model/model');
 var Judgesdb=require('../model/judges');
 var SessionDb=require('../model/session');
 var SummaryDb=require('../model/summary');
+var Lawyersdb=require('../model/lawyers');
 // create and save new user
 
 exports.create = (req,res)=>{
@@ -115,7 +116,83 @@ exports.delete = (req, res)=>{
         });
 }
 
+////////////////////////////////////
 
+
+//lawyer db
+
+exports.createLawyer = (req, res) => {
+    // validate request
+     if (!req.body) {
+       res.status(400).send({ message: "Content can not be empty!" });
+         return;
+    }
+
+    //console.log(req.body);
+    //return;
+
+
+     const { username, password, name, activecases, pastcases } = req.body;
+    
+     const newLawyer = new Lawyersdb({
+        username,
+        password,
+        name,
+        activeCases: activecases.split(',').map(Number), // Convert string to array of numbers
+        pastCases: pastcases.split(',').map(Number) // Convert string to array of numbers
+      });
+
+      console.log(newLawyer.username);
+
+      //return;
+
+   newLawyer.save()
+
+   // console.log("saved");
+        .then(data => {
+           // res.send(data);
+           res.redirect('/addlawyer');
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating a create operation"
+            });
+        });
+
+    // console.log("hisdf");
+}
+
+
+
+
+exports.findLawyer = (req, res) => {
+    if (req.query.id) {
+        const id = req.query.id;
+
+        Lawyersdb.findById(id)
+            .then(data => {
+                if (!data) {
+                    res.status(404).send({ message: "Not found judge with id " + id });
+                } else {
+                    res.send(data);
+                }
+            })
+            .catch(err => {
+                res.status(500).send({ message: "Error retrieving judge with id " + id });
+            });
+    } else {
+        Lawyersdb.find()
+            .then(judges => {
+                res.send(judges);
+            })
+            .catch(err => {
+                res.status(500).send({ message: err.message || "Error occurred while retrieving judge information" });
+            });
+    }
+}
+
+
+///////
 
 
 exports.createJudge = (req, res) => {
@@ -125,22 +202,10 @@ exports.createJudge = (req, res) => {
         return;
     }
 
-    // Create a new instance of the Judge model
-   
-        // RIG: req.body.RIG,
-        // password: req.body.password,
-        // name: req.body.name,
-        // activeCases: [parseInt(req.body.activeCases)],
-        // pastCases: [parseInt(req.body.pastCases)]
+    
 
         const { RIG, password, name, activecases, pastcases } = req.body;
         
-
-
-
-   
-
-
     const newJudge = new Judgesdb({
         RIG,
         password,
@@ -167,6 +232,8 @@ exports.createJudge = (req, res) => {
             });
         });
 }
+
+
 
 exports.findJudge = (req, res) => {
     if (req.query.id) {

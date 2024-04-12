@@ -34,7 +34,10 @@ route.put('/api/users/:id', controller.update);
 route.delete('/api/users/:id', controller.delete);
 
 route.post('/api/judges',controller.createJudge);
+route.post('/api/lawyers',controller.createLawyer);
 route.get('/api/judges', controller.findJudge);
+route.get('/api/lawyers', controller.findJudge)
+
 
 route.post('/api/hearings',controller.createSession);
 route.get('/api/hearings', controller.findSession);
